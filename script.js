@@ -7,7 +7,6 @@ BASE_JSON = "?json";
 
 async function getFavNumberFact(num) {
   let res = await axios.get(`${BASE_URL}${num}${BASE_JSON}`);
-  console.log(res.data.text);
 }
 
 // 2. Figure out how to get data on multiple numbers in a single request. Make that request and when you get the data back, put all of the number facts on the page.
@@ -29,7 +28,6 @@ const fourNumArray = [3, 5, 7, 9];
 
 async function parallelAsync() {
   let { data } = await axios.get(`${BASE_URL}${fourNumArray}${BASE_JSON}`);
-  console.log(data);
 }
 async function parallelAsync() {
   let dataArr = await Promise.all(
@@ -37,7 +35,6 @@ async function parallelAsync() {
       axios.get(`${BASE_URL}${fourNumArray[i]}${BASE_JSON}`)
     )
   );
-  console.log(dataArr);
   dataArr.forEach((res) => {
     $("body").append(`<p>${res.data.text}</p>`);
   });
