@@ -7,6 +7,7 @@ BASE_JSON = "?json";
 
 async function getFavNumberFact(num) {
   let res = await axios.get(`${BASE_URL}${num}${BASE_JSON}`);
+  console.log(res.data.text);
 }
 
 // 2. Figure out how to get data on multiple numbers in a single request. Make that request and when you get the data back, put all of the number facts on the page.
