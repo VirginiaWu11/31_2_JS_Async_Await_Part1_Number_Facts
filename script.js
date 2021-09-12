@@ -31,6 +31,17 @@ async function parallelAsync() {
   let { data } = await axios.get(`${BASE_URL}${fourNumArray}${BASE_JSON}`);
   console.log(data);
 }
+async function parallelAsync() {
+  let dataArr = await Promise.all(
+    Array.from({ length: 4 }, (val, i) =>
+      axios.get(`${BASE_URL}${fourNumArray[i]}${BASE_JSON}`)
+    )
+  );
+  console.log(dataArr);
+  dataArr.forEach((res) => {
+    $("body").append(`<p>${res.data.text}</p>`);
+  });
+}
 parallelAsync();
 
 // //3 Use the API to get 4 facts on your favorite number. Once you have them all, put them on the page. It’s okay if some of the facts are repeats.
